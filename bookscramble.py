@@ -1,9 +1,17 @@
 import streamlit as st
 import random
+import pandas as pd  # 엑셀 파일을 읽기 위해 pandas 사용
 import time
 
-# 책 목록
-book_list = [r"https://github.com/rladldks1130/bookscramble/blob/main/book_list.xlsx"]
+# 엑셀 파일에서 책 목록 불러오기
+@st.cache_data
+def load_books():
+    # 엑셀 파일에서 데이터를 읽고, 'Book Titles'라는 컬럼을 리스트로 변환
+    df = pd.read_excel("book_list.xlsx")
+    return df['Book Titles'].tolist()
+
+# 책 목록 불러오기
+book_list = load_books()
 
 st.title("북스크램블")
 
@@ -18,7 +26,7 @@ if "start" not in st.session_state:
 # 시작 버튼
 if st.button("start"):
 	st.session_state.start = True
-	st.session_state.quiz_book = random.sample(book_list, 10)
+	st.session_state.quiz_book = random.sample(book_list, 10)  # 엑셀에서 불러온 책 목록 중 10개 샘플
 	st.session_state.current_index = 0
 	st.session_state.score = 0
 	st.session_state.key_suffix = 0  # 게임을 시작할 때 key_suffix를 0으로 초기화합니다.
