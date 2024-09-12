@@ -3,7 +3,7 @@ import random
 import time
 
 # 책 목록
-book_list = [r"C:\Python_Project\bookscramble\book_list.xlsx"]
+book_list = [r"https://github.com/rladldks1130/bookscramble/blob/main/book_list.xlsx"]
 
 st.title("북스크램블")
 
