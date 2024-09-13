@@ -13,7 +13,7 @@ def load_books():
 # 책 목록 불러오기
 book_list = load_books()
 
-st.title("북스크램블")
+st.markdown(f"<h2 style='font-size: 70px;'> 북스크램블 </h2>", unsafe_allow_html=True)
 
 # 세션 상태 초기화
 if "start" not in st.session_state:
@@ -38,7 +38,7 @@ if st.session_state.start:
 		book = st.session_state.quiz_book[st.session_state.current_index].replace(" ", "")
 		scramble = random.sample(book, len(book))
 		quiz = " ".join(scramble)
-		st.write(f"문제 {st.session_state.current_index + 1}: {quiz}")
+		st.markdown(f"<h2 style='font-size: 24px;'>문제 {st.session_state.current_index + 1}: {quiz}</h2>", unsafe_allow_html=True)
 
 		# 사용자 입력 받기
 		answer = st.text_input("정답을 입력하세요:", key=f"input{st.session_state.current_index}{st.session_state.key_suffix}")
@@ -48,9 +48,9 @@ if st.session_state.start:
 		answer = answer.replace(" ", "")
 		if answer == book:
 			st.session_state.score += 1
-			st.success(f"정답입니다! {st.session_state.score}/10")
+			st.markdown(f"<h3 style='font-size: 20px;'>정답입니다! {st.session_state.score}/10</h3>", unsafe_allow_html=True)
 		else:
-			st.error(f"오답입니다! {st.session_state.score}/10")
+			st.markdown(f"<h3 style='font-size: 20px;'>오답입니다! {st.session_state.score}/10</h3>", unsafe_allow_html=True)
 
 		# 다음 문제로 넘어가기 전에 인덱스와 key_suffix를 증가시킨 후 1초 대기
 		if st.session_state.current_index < 9:
@@ -61,7 +61,7 @@ if st.session_state.start:
 		else:
 			if st.session_state.score >= 7:
 				st.balloons()
-				st.success(f"총 {st.session_state.score}문제 맞췄습니다. 통과입니다!")
+				st.markdown(f"<h3 style='font-size: 24px;'>총 {st.session_state.score}문제 맞췄습니다. 통과입니다!</h3>", unsafe_allow_html=True)
 			else:
-				st.error(f"총 {st.session_state.score}문제 맞췄습니다. 실패입니다")
+				st.markdown(f"<h3 style='font-size: 24px;'>총 {st.session_state.score}문제 맞췄습니다. 실패입니다</h3>", unsafe_allow_html=True)
 			st.session_state.start = False  # 게임 종료
