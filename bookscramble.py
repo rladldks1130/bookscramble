@@ -45,7 +45,8 @@ if st.session_state.start:
 
 		# 정답 제출 버튼
 	if st.button("정답 제출", key=f"submit{st.session_state.current_index}"):
-		if answer == st.session_state.quiz_book[st.session_state.current_index]:
+		answer = answer.replace(" ", "")
+		if answer == book:
 			st.session_state.score += 1
 			st.success(f"정답입니다! {st.session_state.score}/10")
 		else:
@@ -58,7 +59,6 @@ if st.session_state.start:
 			time.sleep(1)
 			st.rerun()  # 인덱스를 증가시킨 후 페이지 다시 로드
 		else:
-			st.write(f"{st.session_state.score}/10")
 			if st.session_state.score >= 7:
 				st.balloons()
 				st.success(f"총 {st.session_state.score}문제 맞췄습니다. 통과입니다!")
