@@ -41,7 +41,7 @@ if st.session_state.start:
 		st.markdown(f"<h2 style='font-size: 24px;'>문제 {st.session_state.current_index + 1}: {quiz}</h2>", unsafe_allow_html=True)
 
 		# 사용자 입력 받기
-		answer = st.text_input("정답을 입력하세요:", autocomplete=None, key=f"input{st.session_state.current_index}{st.session_state.key_suffix}")
+		answer = st.text_input("정답을 입력하세요:", placeholder=None, key=f"input{st.session_state.current_index}{st.session_state.key_suffix}")
 
 		# 정답 제출 버튼
 	if st.button("정답 제출", key=f"submit{st.session_state.current_index}"):
