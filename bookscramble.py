@@ -48,9 +48,9 @@ if st.session_state.start:
 		answer = answer.replace(" ", "")
 		if answer == book:
 			st.session_state.score += 1
-			st.markdown(f"<h3 style='font-size: 25px;'>정답입니다! {st.session_state.score}/10</h3>", unsafe_allow_html=True)
+			st.markdown(f"<h3 style='font-size: 25px;'>정답입니다! {st.session_state.score}/5</h3>", unsafe_allow_html=True)
 		else:
-			st.markdown(f"<h3 style='font-size: 25px;'>오답입니다! {st.session_state.score}/10</h3>", unsafe_allow_html=True)
+			st.markdown(f"<h3 style='font-size: 25px;'>오답입니다! {st.session_state.score}/5</h3>", unsafe_allow_html=True)
 
 		# 다음 문제로 넘어가기 전에 인덱스와 key_suffix를 증가시킨 후 1초 대기
 		if st.session_state.current_index < 4:
