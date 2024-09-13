@@ -7,7 +7,7 @@ import time
 @st.cache_data
 def load_books():
     # 엑셀 파일에서 데이터를 읽고, 'Book Titles'라는 컬럼을 리스트로 변환
-    df = pd.read_excel("book_list.xlsx")
+    df = pd.read_excel("https://github.com/rladldks1130/bookscramble/raw/main/book_list.xlsx")
     return df['Book Titles'].tolist()
 
 # 책 목록 불러오기
